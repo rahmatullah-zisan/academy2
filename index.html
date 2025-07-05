@@ -121,7 +121,7 @@
 
         /* Background Animation Styles */
         #background-animation-container {
-            position: absolute; /* Changed from fixed to absolute */
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -134,13 +134,20 @@
             position: absolute;
             opacity: 0.1;
             filter: blur(2px);
+            animation: float 20s infinite linear;
             transition: transform 0.8s ease-out; /* Smooth transition for scroll effect */
         }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+            100% { transform: translateY(0px) rotate(360deg); }
+        }
 
-        .bg-shape.shape1 { background-color: #64FFDA; width: 80px; height: 80px; border-radius: 50%; }
-        .bg-shape.shape2 { background-color: #8892B0; width: 120px; height: 120px; border-radius: 30%; }
-        .bg-shape.shape3 { background-color: #64FFDA; width: 50px; height: 50px; border-radius: 40%; }
-        .bg-shape.shape4 { background-color: #8892B0; width: 150px; height: 150px; border-radius: 50%; }
+        .bg-shape.shape1 { background-color: #64FFDA; width: 80px; height: 80px; border-radius: 50%; animation-duration: 25s; }
+        .bg-shape.shape2 { background-color: #f472b6; width: 120px; height: 120px; border-radius: 30%; animation-duration: 35s; animation-direction: reverse; }
+        .bg-shape.shape3 { background-color: #64FFDA; width: 50px; height: 50px; border-radius: 40%; animation-duration: 20s; }
+        .bg-shape.shape4 { background-color: #8b5cf6; width: 150px; height: 150px; border-radius: 50%; animation-duration: 40s; animation-direction: reverse; }
 
         /* Cursor Glow Style */
         #cursor-glow {
@@ -191,10 +198,10 @@
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="nav-link">Home</a>
-                    <a href="#about" class="nav-link">About</a>
                     <a href="#courses" class="nav-link">Courses</a>
                     <a href="#why-us" class="nav-link">Why Us?</a>
                     <a href="#showcase" class="nav-link">Showcase</a>
+                    <a href="#about" class="nav-link">About</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </nav>
 
@@ -210,10 +217,10 @@
             <!-- Mobile Navigation -->
             <div id="mobile-menu" class="hidden md:hidden mt-4 glass-card rounded-lg p-2">
                 <a href="#home" class="block py-2 px-4 text-sm text-brand-light-slate hover:bg-brand-teal hover:text-brand-dark-blue rounded">Home</a>
-                <a href="#about" class="block py-2 px-4 text-sm text-brand-light-slate hover:bg-brand-teal hover:text-brand-dark-blue rounded">About</a>
                 <a href="#courses" class="block py-2 px-4 text-sm text-brand-light-slate hover:bg-brand-teal hover:text-brand-dark-blue rounded">Courses</a>
                 <a href="#why-us" class="block py-2 px-4 text-sm text-brand-light-slate hover:bg-brand-teal hover:text-brand-dark-blue rounded">Why Us?</a>
                 <a href="#showcase" class="block py-2 px-4 text-sm text-brand-light-slate hover:bg-brand-teal hover:text-brand-dark-blue rounded">Showcase</a>
+                <a href="#about" class="block py-2 px-4 text-sm text-brand-light-slate hover:bg-brand-teal hover:text-brand-dark-blue rounded">About</a>
                 <a href="#contact" class="block py-2 px-4 text-sm text-brand-light-slate hover:bg-brand-teal hover:text-brand-dark-blue rounded">Contact</a>
                 <a href="#contact" class="block mt-2 w-full text-center bg-brand-teal text-brand-dark-blue font-bold py-2 px-6 rounded-lg hover:bg-opacity-80 transition-all duration-300">Enroll Now</a>
             </div>
@@ -236,68 +243,6 @@
                     <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6" data-aos="fade-up" data-aos-delay="400">
                         <a href="#courses" class="bg-brand-teal text-brand-dark-blue font-bold py-4 px-10 rounded-lg text-lg glowing-btn">Explore Courses</a>
                         <button id="ask-wizard-btn" class="bg-transparent border-2 border-brand-slate text-brand-slate font-bold py-4 px-10 rounded-lg text-lg hover:border-brand-teal hover:text-brand-teal transition-all duration-300">✨ Ask a Wizard</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 
-          ======================================
-          ABOUT US SECTION
-          ======================================
-        -->
-        <section id="about" class="py-24">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold section-heading">Inspiring Bangladesh's Next Tech Leaders</h2>
-                    <p class="text-lg text-brand-slate mt-4 max-w-3xl mx-auto">We're more than a school; we're a launchpad for young innovators.</p>
-                </div>
-                
-                <div class="glass-card p-8 md:p-12 rounded-lg max-w-4xl mx-auto" data-aos="zoom-in-up">
-                    <div class="text-center">
-                        <a href="#about">
-                            <img src="zisan profile.jpg" alt="Founder Rahmatullah Zisan" class="w-48 h-48 rounded-full object-cover mx-auto mb-6 shadow-xl border-4 border-brand-teal/50 transition-transform duration-300 hover:scale-105">
-                        </a>
-                        <h3 class="text-3xl font-bold text-brand-light-slate">
-                            <a href="#about" class="hover:text-brand-teal transition-colors duration-300">Rahmatullah Zisan</a>
-                        </h3>
-                        <p class="text-xl font-semibold text-brand-teal mb-4">Founder & Chief Wizard</p>
-                        <div class="text-left max-w-2xl mx-auto">
-                            <p class="text-brand-slate mb-4">
-                                "Technology felt like magic to me, and I wanted to give that magic to the next generation. I started Code Wizards to be the place I wished I had as a kid—a place to not just learn, but to build, to experiment, and to see your imagination come to life on a screen."
-                            </p>
-                            <p class="text-brand-slate">
-                                "Our mission is to empower every child in Bangladesh with the tools to become creators in this digital age. We're building a community where young minds can thrive and invent the future."
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Instructors Subsection -->
-                <div class="mt-24">
-                    <h3 class="text-3xl font-bold section-heading text-center mb-12" data-aos="fade-up">Meet Your Mentors</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Instructor Card -->
-                        <div class="glass-card p-6 rounded-lg text-center" data-aos="fade-up" data-aos-delay="100">
-                            <img src="https://placehold.co/200x200/64FFDA/0A192F?text=Mentor" alt="Instructor 1" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-teal/50">
-                            <h4 class="text-xl font-bold text-brand-light-slate">Sadia Ahmed</h4>
-                            <p class="text-brand-teal font-semibold mb-2">Lead Python Instructor</p>
-                            <p class="text-brand-slate text-sm">A software engineer who makes complex code feel like a simple, fun puzzle.</p>
-                        </div>
-                         <!-- Instructor Card -->
-                        <div class="glass-card p-6 rounded-lg text-center" data-aos="fade-up" data-aos-delay="200">
-                            <img src="https://placehold.co/200x200/8892B0/0A192F?text=Mentor" alt="Instructor 2" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-slate/50">
-                            <h4 class="text-xl font-bold text-brand-light-slate">Imran Khan</h4>
-                            <p class="text-brand-teal font-semibold mb-2">Web Development Guru</p>
-                            <p class="text-brand-slate text-sm">Helps teens build awesome websites and launch their first projects online.</p>
-                        </div>
-                         <!-- Instructor Card -->
-                        <div class="glass-card p-6 rounded-lg text-center" data-aos="fade-up" data-aos-delay="300">
-                            <img src="https://placehold.co/200x200/64FFDA/0A192F?text=Mentor" alt="Instructor 3" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-teal/50">
-                            <h4 class="text-xl font-bold text-brand-light-slate">Fatima Chowdhury</h4>
-                            <p class="text-brand-teal font-semibold mb-2">Junior Wizards Specialist</p>
-                            <p class="text-brand-slate text-sm">Turns block-based coding into an epic adventure for our youngest wizards.</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -451,6 +396,65 @@
 
         <!-- 
           ======================================
+          ABOUT US SECTION (MOVED)
+          ======================================
+        -->
+        <section id="about" class="py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold section-heading">The Minds Behind the Magic</h2>
+                    <p class="text-lg text-brand-slate mt-4 max-w-3xl mx-auto">Meet the team dedicated to inspiring the next generation of innovators.</p>
+                </div>
+                
+                <!-- Instructors Subsection -->
+                <div class="mb-24">
+                    <h3 class="text-3xl font-bold section-heading text-center mb-12" data-aos="fade-up">Our Magical Mentors</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Instructor Card -->
+                        <div class="glass-card p-6 rounded-lg text-center" data-aos="fade-up" data-aos-delay="100">
+                            <img src="https://placehold.co/200x200/64FFDA/0A192F?text=Mentor" alt="Instructor 1" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-teal/50">
+                            <h4 class="text-xl font-bold text-brand-light-slate">Sadia Ahmed</h4>
+                            <p class="text-brand-teal font-semibold mb-2">Lead Python Instructor</p>
+                            <p class="text-brand-slate text-sm">A software engineer who makes complex code feel like a simple, fun puzzle.</p>
+                        </div>
+                         <!-- Instructor Card -->
+                        <div class="glass-card p-6 rounded-lg text-center" data-aos="fade-up" data-aos-delay="200">
+                            <img src="https://placehold.co/200x200/8892B0/0A192F?text=Mentor" alt="Instructor 2" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-slate/50">
+                            <h4 class="text-xl font-bold text-brand-light-slate">Imran Khan</h4>
+                            <p class="text-brand-teal font-semibold mb-2">Web Development Guru</p>
+                            <p class="text-brand-slate text-sm">Helps teens build awesome websites and launch their first projects online.</p>
+                        </div>
+                         <!-- Instructor Card -->
+                        <div class="glass-card p-6 rounded-lg text-center" data-aos="fade-up" data-aos-delay="300">
+                            <img src="https://placehold.co/200x200/64FFDA/0A192F?text=Mentor" alt="Instructor 3" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-teal/50">
+                            <h4 class="text-xl font-bold text-brand-light-slate">Fatima Chowdhury</h4>
+                            <p class="text-brand-teal font-semibold mb-2">Junior Wizards Specialist</p>
+                            <p class="text-brand-slate text-sm">Turns block-based coding into an epic adventure for our youngest wizards.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Founder Block -->
+                <div class="glass-card p-8 md:p-12 rounded-lg max-w-4xl mx-auto" data-aos="zoom-in-up">
+                    <div class="text-center">
+                        <img src="zisan profile.jpg" alt="Founder Rahmatullah Zisan" class="w-48 h-48 rounded-full object-cover mx-auto mb-6 shadow-xl border-4 border-brand-teal/50">
+                        <h3 class="text-3xl font-bold text-brand-light-slate">Rahmatullah Zisan</h3>
+                        <p class="text-xl font-semibold text-brand-teal mb-4">Founder & Chief Wizard</p>
+                        <div class="text-left max-w-2xl mx-auto">
+                            <p class="text-brand-slate mb-4">
+                                "Technology felt like magic to me, and I wanted to give that magic to the next generation. I started Code Wizards to be the place I wished I had as a kid—a place to not just learn, but to build, to experiment, and to see your imagination come to life on a screen."
+                            </p>
+                            <p class="text-brand-slate">
+                                "Our mission is to empower every child in Bangladesh with the tools to become creators in this digital age. We're building a community where young minds can thrive and invent the future."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+          ======================================
           CONTACT & ENROLLMENT SECTION
           ======================================
         -->
@@ -582,7 +586,7 @@
       ======================================
     -->
     <!-- "Ask a Wizard" Modal -->
-    <div id="wizard-modal" class="fixed inset-0 z-50 items-center justify-center hidden modal-backdrop">
+    <div id="wizard-modal" class="fixed inset-0 z-[100] items-center justify-center hidden modal-backdrop">
         <div class="glass-card rounded-lg shadow-2xl w-11/12 md:w-2/3 lg:w-1/2 max-w-4xl p-8 border-2 border-brand-teal/50 relative">
             <button id="close-wizard-modal" class="absolute top-4 right-4 text-brand-slate hover:text-brand-teal text-2xl">&times;</button>
             <h3 class="text-2xl font-bold text-brand-light-slate mb-4">Ask Our AI Wizard</h3>
@@ -598,7 +602,7 @@
     </div>
 
     <!-- "Project Ideas" Modal -->
-    <div id="project-modal" class="fixed inset-0 z-50 items-center justify-center hidden modal-backdrop">
+    <div id="project-modal" class="fixed inset-0 z-[100] items-center justify-center hidden modal-backdrop">
         <div class="glass-card rounded-lg shadow-2xl w-11/12 md:w-2/3 lg:w-1/2 max-w-4xl p-8 border-2 border-brand-teal/50 relative">
             <button id="close-project-modal" class="absolute top-4 right-4 text-brand-slate hover:text-brand-teal text-2xl">&times;</button>
             <h3 id="project-modal-title" class="text-2xl font-bold text-brand-light-slate mb-4">Project Ideas</h3>
@@ -621,15 +625,15 @@
         document.addEventListener('DOMContentLoaded', function () {
             // --- Initialize AOS ---
             AOS.init({
-                duration: 800, // values from 0 to 3000, with step 50ms
-                once: true, // whether animation should happen only once - while scrolling down
+                duration: 800, 
+                once: true, 
             });
 
             // --- Background & Cursor Animations ---
             const backgroundContainer = document.getElementById('background-animation-container');
             const cursorGlow = document.getElementById('cursor-glow');
             const shapeClasses = ['shape1', 'shape2', 'shape3', 'shape4'];
-            const numShapes = 20; // Increased number of shapes
+            const numShapes = 20; 
             const shapes = [];
 
             for (let i = 0; i < numShapes; i++) {
@@ -637,10 +641,10 @@
                 const size = Math.random() * 100 + 50;
                 shape.classList.add('bg-shape', shapeClasses[i % shapeClasses.length]);
                 
-                // Store initial positions and parallax speed factor
                 const initialTop = Math.random() * 100;
                 const initialLeft = Math.random() * 100;
                 const parallaxFactor = Math.random() * 0.5 + 0.1;
+                shape.style.animationDelay = `${Math.random() * 20}s`;
 
                 shape.style.top = `${initialTop}%`;
                 shape.style.left = `${initialLeft}%`;
@@ -648,28 +652,20 @@
                 shape.style.height = `${size}px`;
                 
                 backgroundContainer.appendChild(shape);
-                shapes.push({
-                    element: shape,
-                    initialTop: initialTop,
-                    initialLeft: initialLeft,
-                    parallaxFactor: parallaxFactor
-                });
+                shapes.push({ element: shape, parallaxFactor: parallaxFactor });
             }
             
-            // Adjust background container height
             backgroundContainer.style.height = `${document.body.scrollHeight}px`;
             
-            // Parallax scroll effect for background shapes
             window.addEventListener('scroll', () => {
                 let scrollY = window.scrollY;
                 shapes.forEach(shapeInfo => {
                     const { element, parallaxFactor } = shapeInfo;
-                    element.style.transform = `translateY(${scrollY * parallaxFactor * -1}px) rotate(${scrollY * parallaxFactor * 0.2}deg)`;
+                    // We only apply the scroll-based translation, the rotation is handled by the CSS keyframe animation
+                    element.style.transform = `translateY(${scrollY * parallaxFactor * -1}px)`;
                 });
             });
 
-
-            // Only run cursor glow on non-touch devices
             if (!('ontouchstart' in window)) {
                 document.addEventListener('mousemove', (e) => {
                     cursorGlow.style.left = `${e.clientX}px`;
@@ -687,86 +683,40 @@
 
             mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
             mobileMenuLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
-            document.addEventListener('click', (event) => {
-                const isClickInsideMenu = mobileMenu.contains(event.target);
-                const isClickOnButton = mobileMenuButton.contains(event.target);
-                if (!mobileMenu.classList.contains('hidden') && !isClickInsideMenu && !isClickOnButton) {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
+
 
             // --- Gemini API Integration ---
-            
-            // IMPORTANT: To make this work on GitHub Pages or any live server,
-            // you MUST get your own API key from Google AI Studio (https://aistudio.google.com/app/apikey)
-            // and paste it here.
             const API_KEY = "PASTE_YOUR_GEMINI_API_KEY_HERE"; 
-
-            // SECURITY WARNING: Storing an API key directly in your public website's code
-            // is not secure. Anyone can view it. For a real, production application,
-            // you should hide this key on a server and have your website talk to your server.
-            // But for a personal project or portfolio, this method is the simplest way to get it working.
 
             // --- Modal Elements ---
             const wizardModal = document.getElementById('wizard-modal');
             const projectModal = document.getElementById('project-modal');
-
             const askWizardBtn = document.getElementById('ask-wizard-btn');
             const closeWizardModalBtn = document.getElementById('close-wizard-modal');
             const submitWizardQueryBtn = document.getElementById('submit-wizard-query');
             const wizardQueryInput = document.getElementById('wizard-query');
             const wizardResponseArea = document.getElementById('wizard-response-area');
-
             const projectIdeaBtns = document.querySelectorAll('.project-idea-btn');
             const closeProjectModalBtn = document.getElementById('close-project-modal');
             const projectModalTitle = document.getElementById('project-modal-title');
             const projectResponseArea = document.getElementById('project-response-area');
 
-            // --- Utility Functions ---
-            const showModal = (modal) => {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-            };
-            const hideModal = (modal) => {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            };
-            const showLoader = (element) => {
-                element.innerHTML = '<div class="flex justify-center items-center"><div class="loader"></div></div>';
-            };
+            const showModal = (modal) => { modal.classList.remove('hidden'); modal.classList.add('flex'); };
+            const hideModal = (modal) => { modal.classList.add('hidden'); modal.classList.remove('flex'); };
+            const showLoader = (element) => { element.innerHTML = '<div class="flex justify-center items-center"><div class="loader"></div></div>'; };
             
-            // --- Generic Gemini API Call Function ---
             async function callGemini(prompt) {
                 if (API_KEY === "PASTE_YOUR_GEMINI_API_KEY_HERE") {
                     return "API Key not found. Please follow the instructions in the code to add your Gemini API key."
                 }
-
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
-                const payload = {
-                    contents: [{
-                        role: "user",
-                        parts: [{ text: prompt }]
-                    }]
-                };
+                const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
 
                 try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        const errorData = await response.json();
-                        console.error("API Error Response:", errorData);
-                        throw new Error(`API Error: ${response.status} ${response.statusText}. Check console for details.`);
-                    }
-
+                    const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                    if (!response.ok) { throw new Error(`API Error: ${response.statusText}`); }
                     const result = await response.json();
-                    
-                    if (result.candidates && result.candidates.length > 0 &&
-                        result.candidates[0].content && result.candidates[0].content.parts &&
-                        result.candidates[0].content.parts.length > 0) {
+                    if (result.candidates?.[0]?.content?.parts?.[0]) {
                         return result.candidates[0].content.parts[0].text;
                     } else {
                         console.error("Unexpected API response structure:", result);
@@ -778,67 +728,47 @@
                 }
             }
 
-            // --- "Ask a Wizard" Logic ---
-            askWizardBtn.addEventListener('click', () => {
-                wizardQueryInput.value = '';
-                wizardResponseArea.innerHTML = '';
-                showModal(wizardModal);
-            });
-
+            askWizardBtn.addEventListener('click', () => { wizardQueryInput.value = ''; wizardResponseArea.innerHTML = ''; showModal(wizardModal); });
             closeWizardModalBtn.addEventListener('click', () => hideModal(wizardModal));
-
             submitWizardQueryBtn.addEventListener('click', async () => {
                 const userQuery = wizardQueryInput.value.trim();
                 if (!userQuery) {
                     wizardResponseArea.innerHTML = '<p class="text-brand-teal">Please ask a question!</p>';
                     return;
                 }
-
                 showLoader(wizardResponseArea);
-                
-                const prompt = `You are a friendly, encouraging, and knowledgeable AI tutor for "Zisan's Code Wizards Academy," a programming school for kids (ages 7-18) in Bangladesh. A potential parent or student has asked the following question: "${userQuery}". 
-                
-                Please answer their question in a clear, simple, and encouraging way. Keep the tone positive and exciting. If the question is about a programming concept, explain it simply. If it's about careers, be optimistic. Address the context of learning in Bangladesh if relevant. Format your response using markdown-style headings, bold text, and lists where appropriate.`;
-
+                const prompt = `You are a friendly, encouraging AI tutor for "Zisan's Code Wizards Academy," a programming school for kids (ages 7-18) in Bangladesh. A user asked: "${userQuery}". Answer clearly and simply. If it's about programming, explain it for a beginner. If about careers, be optimistic. Keep the tone positive and exciting. Format your response with markdown-style headings, bold text, and lists where appropriate.`;
                 const responseText = await callGemini(prompt);
-                // A simple markdown to HTML converter
                 let formattedResponse = responseText
-                    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-brand-light-slate">$1</strong>') // Bold
-                    .replace(/\n/g, '<br>') // Newlines
-                    .replace(/### (.*?)(<br>|$)/g, '<h4 class="text-xl font-bold text-brand-teal mt-4 mb-2">$1</h4>') // H3
-                    .replace(/\* (.*?)(<br>|$)/g, '<li class="ml-5 list-disc">$1</li>'); // List items
-                
+                    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-brand-light-slate">$1</strong>')
+                    .replace(/\n/g, '<br>')
+                    .replace(/### (.*?)(<br>|$)/g, '<h4 class="text-xl font-bold text-brand-teal mt-4 mb-2">$1</h4>')
+                    .replace(/\* (.*?)(<br>|$)/g, '<li class="ml-5 list-disc">$1</li>');
                 wizardResponseArea.innerHTML = `<div class="text-brand-slate space-y-2">${formattedResponse}</div>`;
             });
 
-            // --- "Project Ideas" Logic ---
             projectIdeaBtns.forEach(btn => {
                 btn.addEventListener('click', async () => {
                     const courseType = btn.dataset.course;
                     showModal(projectModal);
                     showLoader(projectResponseArea);
-
                     let prompt;
                     if (courseType === 'junior') {
                         projectModalTitle.textContent = "Junior Wizards Project Ideas";
                         prompt = `You are an AI that inspires kids to code. Generate 3 fun, simple, and exciting project ideas for a student aged 7-12 at "Zisan's Code Wizards Academy" in Bangladesh. The projects should be suitable for block-based coding like Scratch or simple Python. For each idea, provide a catchy title and a 1-2 sentence description. Format the response with each idea having a title in bold (e.g., **Project Title**) followed by the description.`;
-                    } else { // teen
+                    } else {
                         projectModalTitle.textContent = "Teen Titans Project Ideas";
                         prompt = `You are an AI that inspires teenagers to code. Generate 3 practical and cool project ideas for a student aged 13-18 at "Zisan's Code Wizards Academy" in Bangladesh. The projects should be suitable for languages like Python, HTML/CSS, and JavaScript. For each idea, provide a catchy title, a 1-2 sentence description, and mention the primary language/tool. Format the response with each idea having a title in bold (e.g., **Project Title**), followed by the description and tools.`;
                     }
-
                     const responseText = await callGemini(prompt);
                     let formattedResponse = responseText
-                        .replace(/\*\*(.*?)\*\*/g, '<h4 class="text-xl font-bold text-brand-teal mt-4 mb-2">$1</h4>') // Title
+                        .replace(/\*\*(.*?)\*\*/g, '<h4 class="text-xl font-bold text-brand-teal mt-4 mb-2">$1</h4>')
                         .replace(/\n/g, '<br>')
-                        .replace(/<br><br>/g, '<br>'); // Reduce double line breaks
-
+                        .replace(/<br><br>/g, '<br>');
                     projectResponseArea.innerHTML = `<div class="text-brand-slate space-y-4">${formattedResponse}</div>`;
                 });
             });
-
             closeProjectModalBtn.addEventListener('click', () => hideModal(projectModal));
-
         });
     </script>
 
