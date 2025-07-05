@@ -61,9 +61,8 @@
         }
 
         .hero-section {
-            background-image:
-                radial-gradient(circle at 15% 50%, rgba(100, 255, 218, 0.1), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(17, 34, 64, 0.5), transparent 25%);
+            position: relative;
+            z-index: 1;
         }
 
         .glass-card {
@@ -119,9 +118,61 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        /* Background Animation Styles */
+        #background-animation-container {
+            position: absolute; /* Changed from fixed to absolute */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-shape {
+            position: absolute;
+            opacity: 0.1;
+            filter: blur(2px);
+            transition: transform 0.8s ease-out; /* Smooth transition for scroll effect */
+        }
+
+        .bg-shape.shape1 { background-color: #64FFDA; width: 80px; height: 80px; border-radius: 50%; }
+        .bg-shape.shape2 { background-color: #8892B0; width: 120px; height: 120px; border-radius: 30%; }
+        .bg-shape.shape3 { background-color: #64FFDA; width: 50px; height: 50px; border-radius: 40%; }
+        .bg-shape.shape4 { background-color: #8892B0; width: 150px; height: 150px; border-radius: 50%; }
+
+        /* Cursor Glow Style */
+        #cursor-glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(100, 255, 218, 0.1) 0%, rgba(100, 255, 218, 0) 60%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+            z-index: 100;
+            opacity: 0;
+        }
+
+        /* Footer Background Style */
+        footer {
+            background-color: #0A192F;
+            background-image: 
+                linear-gradient(rgba(100, 255, 218, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(100, 255, 218, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
     </style>
 </head>
 <body class="font-inter">
+
+    <!-- Background Animation & Cursor Glow Elements -->
+    <div id="cursor-glow"></div>
+    <div id="background-animation-container"></div>
+
 
     <!-- 
       ======================================
@@ -132,7 +183,7 @@
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
-                <a href="#home" class="flex items-center space-x-2 text-2xl font-bold text-brand-teal">
+                <a href="#home" class="flex items-center space-x-2 text-2xl font-bold text-brand-teal hover:opacity-80 transition-opacity duration-300">
                     <i class="fa-solid fa-code"></i>
                     <span>Code Wizards</span>
                 </a>
@@ -169,13 +220,13 @@
         </div>
     </header>
 
-    <main>
+    <main class="relative z-10">
         <!-- 
           ======================================
           HERO SECTION
           ======================================
         -->
-        <section id="home" class="hero-section relative">
+        <section id="home" class="hero-section">
             <div class="min-h-[calc(100vh-80px)] flex items-center justify-center">
                 <div class="container mx-auto px-6 text-center">
                     <h1 class="text-4xl sm:text-5xl md:text-7xl font-black leading-tight mb-4 text-brand-light-slate" data-aos="fade-up">Build Your Universe with Code.</h1>
@@ -467,15 +518,56 @@
       FOOTER
       ======================================
     -->
-    <footer class="bg-brand-dark-blue border-t border-brand-light-blue">
-        <div class="container mx-auto px-6 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <p class="text-sm text-brand-slate">&copy; 2025 Zisan's Code Wizards Academy. All Rights Reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="text-brand-slate hover:text-brand-teal transition-colors duration-300 text-2xl"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" class="text-brand-slate hover:text-brand-teal transition-colors duration-300 text-2xl"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#" class="text-brand-slate hover:text-brand-teal transition-colors duration-300 text-2xl"><i class="fa-brands fa-github"></i></a>
+    <footer class="border-t border-brand-light-blue/20 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <!-- Column 1: Brand -->
+                <div class="space-y-4">
+                    <a href="#home" class="flex items-center space-x-2 text-2xl font-bold text-brand-teal">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Code Wizards</span>
+                    </a>
+                    <p class="text-brand-slate">Unlocking the next generation of tech innovators in Bangladesh.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-brand-slate hover:text-brand-teal transition-colors duration-300 text-2xl"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="text-brand-slate hover:text-brand-teal transition-colors duration-300 text-2xl"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="text-brand-slate hover:text-brand-teal transition-colors duration-300 text-2xl"><i class="fa-brands fa-github"></i></a>
+                    </div>
                 </div>
+
+                <!-- Column 2: Quick Links -->
+                <div class="space-y-4">
+                    <h4 class="font-bold text-brand-light-slate text-lg">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-brand-slate hover:text-brand-teal transition-colors">About Us</a></li>
+                        <li><a href="#courses" class="text-brand-slate hover:text-brand-teal transition-colors">Courses</a></li>
+                        <li><a href="#showcase" class="text-brand-slate hover:text-brand-teal transition-colors">Showcase</a></li>
+                        <li><a href="#contact" class="text-brand-slate hover:text-brand-teal transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources -->
+                 <div class="space-y-4">
+                    <h4 class="font-bold text-brand-light-slate text-lg">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-brand-slate hover:text-brand-teal transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-brand-slate hover:text-brand-teal transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-brand-slate hover:text-brand-teal transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Contact -->
+                <div class="space-y-4">
+                    <h4 class="font-bold text-brand-light-slate text-lg">Get in Touch</h4>
+                    <ul class="space-y-2 text-brand-slate">
+                        <li class="flex items-start"><i class="fa-solid fa-location-dot text-brand-teal w-5 mt-1 mr-2"></i><span>Gulshan 2, Dhaka, Bangladesh</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-phone text-brand-teal w-5 mt-1 mr-2"></i><span>+880 1700-000000</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-envelope text-brand-teal w-5 mt-1 mr-2"></i><span>info@codewizards.bd</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-brand-light-blue/20 pt-8 text-center text-sm text-brand-slate">
+                <p>&copy; 2025 Zisan's Code Wizards Academy. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -529,6 +621,61 @@
                 once: true, // whether animation should happen only once - while scrolling down
             });
 
+            // --- Background & Cursor Animations ---
+            const backgroundContainer = document.getElementById('background-animation-container');
+            const cursorGlow = document.getElementById('cursor-glow');
+            const shapeClasses = ['shape1', 'shape2', 'shape3', 'shape4'];
+            const numShapes = 20; // Increased number of shapes
+            const shapes = [];
+
+            for (let i = 0; i < numShapes; i++) {
+                const shape = document.createElement('div');
+                const size = Math.random() * 100 + 50;
+                shape.classList.add('bg-shape', shapeClasses[i % shapeClasses.length]);
+                
+                // Store initial positions and parallax speed factor
+                const initialTop = Math.random() * 100;
+                const initialLeft = Math.random() * 100;
+                const parallaxFactor = Math.random() * 0.5 + 0.1;
+
+                shape.style.top = `${initialTop}%`;
+                shape.style.left = `${initialLeft}%`;
+                shape.style.width = `${size}px`;
+                shape.style.height = `${size}px`;
+                
+                backgroundContainer.appendChild(shape);
+                shapes.push({
+                    element: shape,
+                    initialTop: initialTop,
+                    initialLeft: initialLeft,
+                    parallaxFactor: parallaxFactor
+                });
+            }
+            
+            // Adjust background container height
+            backgroundContainer.style.height = `${document.body.scrollHeight}px`;
+            
+            // Parallax scroll effect for background shapes
+            window.addEventListener('scroll', () => {
+                let scrollY = window.scrollY;
+                shapes.forEach(shapeInfo => {
+                    const { element, parallaxFactor } = shapeInfo;
+                    element.style.transform = `translateY(${scrollY * parallaxFactor * -1}px) rotate(${scrollY * parallaxFactor * 0.2}deg)`;
+                });
+            });
+
+
+            // Only run cursor glow on non-touch devices
+            if (!('ontouchstart' in window)) {
+                document.addEventListener('mousemove', (e) => {
+                    cursorGlow.style.left = `${e.clientX}px`;
+                    cursorGlow.style.top = `${e.clientY}px`;
+                });
+                document.body.addEventListener('mouseenter', () => cursorGlow.style.opacity = 1);
+                document.body.addEventListener('mouseleave', () => cursorGlow.style.opacity = 0);
+            }
+
+
             // --- Basic Menu Interactivity ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -545,7 +692,16 @@
             });
 
             // --- Gemini API Integration ---
-            const API_KEY = ""; // API Key is handled by the execution environment
+            
+            // IMPORTANT: To make this work on GitHub Pages or any live server,
+            // you MUST get your own API key from Google AI Studio (https://aistudio.google.com/app/apikey)
+            // and paste it here.
+            const API_KEY = "PASTE_YOUR_GEMINI_API_KEY_HERE"; 
+
+            // SECURITY WARNING: Storing an API key directly in your public website's code
+            // is not secure. Anyone can view it. For a real, production application,
+            // you should hide this key on a server and have your website talk to your server.
+            // But for a personal project or portfolio, this method is the simplest way to get it working.
 
             // --- Modal Elements ---
             const wizardModal = document.getElementById('wizard-modal');
@@ -577,6 +733,10 @@
             
             // --- Generic Gemini API Call Function ---
             async function callGemini(prompt) {
+                if (API_KEY === "PASTE_YOUR_GEMINI_API_KEY_HERE") {
+                    return "API Key not found. Please follow the instructions in the code to add your Gemini API key."
+                }
+
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
                 const payload = {
                     contents: [{
@@ -593,7 +753,9 @@
                     });
 
                     if (!response.ok) {
-                        throw new Error(`API Error: ${response.statusText}`);
+                        const errorData = await response.json();
+                        console.error("API Error Response:", errorData);
+                        throw new Error(`API Error: ${response.status} ${response.statusText}. Check console for details.`);
                     }
 
                     const result = await response.json();
